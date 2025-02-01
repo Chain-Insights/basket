@@ -16,4 +16,4 @@ RUN pip install --no-cache-dir --upgrade pip && \
 EXPOSE 8000
 
 # Start FastAPI with the correct command
-CMD ["sh", "-c", "poetry run uvicorn trading_api:app --host 0.0.0.0 --port ${PORT:-8000} --reload"]
+CMD ["sh", "-c", "poetry run uvicorn trading_api:app --host 0.0.0.0:-8000 --reload"]
