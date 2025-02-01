@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy project files into the container
 COPY . .
 
-# Install dependencies
+# Install Poetry
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install poetry && \
     poetry install --no-root
@@ -15,7 +15,5 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Expose port 8000 for FastAPI
 EXPOSE 8000
 
-# Command to run the FastAPI app
-CMD ["sh", "-c", "poetry run uvicorn trading_api:app --host 0.0.0.0 --port ${PORT:-8000}"]
-
-
+# Start FastAPI with the correct command
+CMD ["sh", "-c", "poetry run uvicorn trading_api:app --host 0.0.0.0 --port ${PORT:-8000} --reload"]
